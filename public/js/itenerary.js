@@ -9,3 +9,18 @@ $(function listAllPlaces() {
     $('#activitiesDropDown').append('<option>'+ activities[i].name +'</option>')
   }
 })
+
+$("#hotelAdd").on('click', function(){
+  console.log($('#hotelsDropDown :selected').text())
+  $("#bookedHotel").append('<span>' + $("#hotelsDropDown :selected").text() +'</span>')
+})
+
+$("#restaurantAdd").on('click', function(){
+  console.log($('#restaurantsDropDown :selected').text())
+  $("#bookedRestaurant").append('<span>' + $("#restaurantsDropDown :selected").text() +'</span>')
+})
+
+$("#activityAdd").on('click', function(){
+  console.log($('#activitiesDropDown :selected').text())
+  $("#bookedActivity").append('<span>' + $("#activitiesDropDown :selected").text() +'</span>')
+})
