@@ -1,11 +1,3 @@
-function drawMarker (type, coords) {
-    const latLng = new google.maps.LatLng(coords[0], coords[1]);
-    const marker = new google.maps.Marker({
-      position: latLng
-    });
-    marker.setMap(currentMap);
-  }
-
   $(function listAllPlaces() {
   for (var i=0; i < hotels.length; i++) {
     $('#hotelsDropDown').append('<option>'+ hotels[i].name +'</option>')
@@ -28,15 +20,29 @@ $("#hotelAdd").on('click', function(){
     }
   }
   console.log(hotelCoordinate)
-  // drawMarker('hotel', hotelCoordinate)
+  drawMarker('hotel', hotelCoordinate)
 })
 
 $("#restaurantAdd").on('click', function(){
   console.log($('#restaurantsDropDown :selected').text())
   $("#bookedRestaurant").append('<span>' + $("#restaurantsDropDown :selected").text() +'</span>')
+  var restaurantCoordinate;
+  for (var i =0; i<restaurants.length; i++){
+    if ( restaurants[i].name === $("#restaurantsDropDown :selected").text() ){
+      restaurantCoordinate = restaurants[i].place.location
+    }
+  }
+  drawMarker('restaurant', restaurantCoordinate)
 })
 
 $("#activityAdd").on('click', function(){
   console.log($('#activitiesDropDown :selected').text())
   $("#bookedActivity").append('<span>' + $("#activitiesDropDown :selected").text() +'</span>')
+  var activityCoordinate;
+  for (var i =0; i<activities.length; i++){
+    if ( activities[i].name === $("#activitiesDropDown :selected").text() ){
+      activityCoordinate = activities[i].place.location
+    }
+  }
+  drawMarker('activity', activityCoordinate)
 })

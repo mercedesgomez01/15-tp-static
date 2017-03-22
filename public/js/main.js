@@ -1,9 +1,10 @@
-$(function initializeMap () {
-  var meth = {
-    draw: function() {
-      console.log('draw draw draw')
-    }
-  }
+// $(
+  // function initializeMap () {
+  // var meth = {
+  //   draw: function() {
+  //     console.log('draw draw draw')
+  //   }
+  // }
   const fullstackAcademy = new google.maps.LatLng(40.705086, -74.009151);
 
   const styleArr = [
@@ -62,7 +63,7 @@ $(function initializeMap () {
 
   console.log('about to send')
 
-  function drawMarker (type, coords) {
+  var drawMarker =function(type, coords) {
     const latLng = new google.maps.LatLng(coords[0], coords[1]);
     const marker = new google.maps.Marker({
       position: latLng
@@ -70,8 +71,10 @@ $(function initializeMap () {
     marker.setMap(currentMap);
   }
 
+  //return drawMarker
+
   // drawMarker('hotel', [40.705137, -74.007624]);
   // drawMarker('restaurant', [40.705137, -74.013940]);
   // drawMarker('activity', [40.716291, -73.995315]);
 
-});
+//});
