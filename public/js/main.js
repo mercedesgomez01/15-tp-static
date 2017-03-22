@@ -63,13 +63,20 @@
 
   console.log('about to send')
 
+  var markerArray = []
   var drawMarker =function(type, coords) {
     const latLng = new google.maps.LatLng(coords[0], coords[1]);
     const marker = new google.maps.Marker({
       position: latLng
     });
     marker.setMap(currentMap);
+    markerArray.push({coords:marker})
+    // var removeMarker = function(coords){
+    // mrkr= markerArray[coords]
+    // mrkr.setMap(null);
+    }
   }
+
 
   //return drawMarker
 

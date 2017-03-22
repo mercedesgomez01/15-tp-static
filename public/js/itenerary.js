@@ -15,8 +15,6 @@
 // ADD ITINERARY ITEMS
 
 $("#hotelAdd").on('click', function(){
-  $("#bookedHotel").append('<span>' + $("#hotelsDropDown :selected").text() +'</span>')
-  $('#bookedHotel').append('<button class="btn btn-xs btn-danger remove btn-circle pull-right">x</button>')
   var hotelCoordinate;
   for (var i =0; i<hotels.length; i++){
     if ( hotels[i].name === $("#hotelsDropDown :selected").text() ){
@@ -24,6 +22,9 @@ $("#hotelAdd").on('click', function(){
     }
   }
   drawMarker('hotel', hotelCoordinate)
+  $("#bookedHotel").append('<span>' + $("#hotelsDropDown :selected").text() +'</span>').data('hotelCoordinate', hotelCoordinate)
+  $('#bookedHotel').append('<button class="btn btn-xs btn-danger remove btn-circle pull-right">x</button>')
+
 })
 
 $("#restaurantAdd").on('click', function(){
@@ -55,9 +56,12 @@ $("#activityAdd").on('click', function(){
 // REMOVE ITINERARY ITEMS
 
 $('#bookedHotel').on('click', '.remove', function() {
+  console.log($(this).prev().data())
   $(this).prev().remove()
   $(this).remove()
+  // drawMarker().removeMarker(data("hotelCoordinate"))
 });
+
 
 
   // console.log($('#restaurantsDropDown :selected').text())
